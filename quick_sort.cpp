@@ -1,10 +1,5 @@
-#include <iostream>
- 
-#include <cstdlib>
- 
-using std::rand;
-using std::swap;
- 
+#include "header.h"
+
 // pivot - "опорный" элемент
 // partition - переупорядочивает элементы части массива,
 // заданной отрезком [left, right), так что в начале
@@ -13,10 +8,16 @@ using std::swap;
 int * partition(int * left, int *  right, int pivot) {
 	int * store = left; // место для вставки элементов, меньших pivot
 	for (int * p = left; p != right; ++p)
+	{
 		if (*p < pivot)
-			swap(*p, *store++);
+		{
+			swap(*p, *store);
+			store++;
+		}
+	}
 	return store;
 }
+
  
 void my_qsort(int * arr, int n) {
 	if (n <= 1)
